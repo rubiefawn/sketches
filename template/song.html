@@ -1,0 +1,14 @@
+{{define "song"}}
+<div class=song>
+  <h2 class=song-name>{{.Emoji}} {{.Name}}</h2>
+  <select class=song-version {{if le (len .Drafts) 1}}disabled{{end}}>
+    {{range $i, $draft := .Drafts}}
+    <option value="{{$draft.Path}}">{{$draft.Modified.Format "2006-01-02"}}</option>
+    {{end}}
+  </select>
+  <button class=btn-play-song>
+    <span class=btn-toggle>listen</span>
+    <input id=song-{{$i}} type=checkbox hidden></input>
+  </button>
+</div>
+{{end}}

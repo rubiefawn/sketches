@@ -1,0 +1,108 @@
+:root {
+	--max-width: 576px;
+	background-color: var(--bg-base);
+	color: var(--fg-base);
+}
+
+body {
+	display: grid;
+	grid-template:
+		". main ." 1fr
+		"footer footer footer" auto / 1fr max-content 1fr;
+	width: 100lvw;
+	height: 100lvh;
+}
+
+main {
+	overflow: auto;
+	max-width: var(--max-width);
+	grid-area: main;
+}
+
+footer {
+	border-top: 2px solid var(--fg-base);
+	position: sticky;
+	bottom: 0;
+	grid-area: footer;
+	display: flex;
+	justify-content: center;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background-color: var(--fg-base);
+  font: inherit;
+}
+
+button > .btn-inner {
+  border: 2px solid var(--fg-base);
+  border-radius: inherit;
+  padding: calc(.5lh - .5em) .5ch;
+  background-color: var(--bg-base);
+  color: var(--fg-base);
+  transform: translateY(-2px);
+  transition: transform 80ms ease, color 80ms ease, background-color 80ms ease; 
+}
+
+button:hover > .btn-inner {
+  transform: translateY(-3px);
+  cursor: pointer;
+}
+
+button:active > .btn-inner {
+  transform: translateY(0);
+}
+
+.song {
+	border: 2px solid var(--fg-base);
+	border-bottom-width: 4px;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+}
+
+.song-name {
+	margin-right: auto;
+}
+
+#playback-controls {
+	flex: 1;
+	max-width: var(--max-width);
+	display: grid;
+	gap: 1rem;
+	grid-template:
+		"name name name" 1fr
+		"btn playback time" 2fr / minmax(0, auto) 1fr minmax(0, auto);
+	align-items: center;
+	font-size: calc(1rem * var(--lg));
+}
+
+@media (width < 576px) {
+	#playback-controls {
+		font-size: 1rem;
+		gap: 0.5rem;
+		grid-template:
+			"name time" 1fr
+			"playback btn" 1fr / 1fr minmax(0, auto);
+	}
+}
+
+#btn-main {
+	grid-area: btn;
+}
+
+#name-main {
+	grid-area: name;
+	text-align: center;
+}
+
+#playback-progress {
+	grid-area: playback;
+}
+
+#playback-time {
+	grid-area: time;
+}

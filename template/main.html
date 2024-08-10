@@ -1,0 +1,37 @@
+{{define "main"}}
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>📻 audio sketches</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel=stylesheet href=static/css/saffron.css />
+  <link rel=stylesheet href=static/css/sketches.css />
+</head>
+
+<body>
+
+  <main>
+  	<h1 class="fw:zl m:sm" style="text-align: center">audio sketches</h1>
+  	<br>
+    {{range .}}
+    {{template "song" .}}
+    {{end}}
+    <audio></audio>
+  </main>
+
+  <footer class=fw:xl>
+  	<div id=playback-controls class=p:sm>
+  		<h3 id=name-main>playing some song idk</h3>
+  		<button id=btn-main class=r:xs><div class=btn-inner>test</div></button>
+  		<input id=playback-progress type=range value=0 min=0 max=1 step=any>
+  		<code id=playback-time>12:34/56:78</code>
+  	</div>
+  </footer>
+
+  <script type=module src=/static/js/sketches.mjs></script>
+
+</body>
+{{end}}
